@@ -40,12 +40,9 @@ public class PlayerMovement : MonoBehaviour
         tiempoDesdeUltimaFuerza = 0f;
         intervaloTiempo = 2f;
         velocidadLateral = 5f;
-        SetStrategy(new MovimientoAcelerado());
+       // SetStrategy(new MovimientoAcelerado());
     }
-    private void Update()
-    {
-        strategy.Move(transform, velocidadLateral);
-    }
+
 
 
     // Logica para aplicar fuerzas
@@ -58,6 +55,11 @@ public class PlayerMovement : MonoBehaviour
             GetComponent<Rigidbody>().AddForce(fuerzaPorAplicar);
             tiempoDesdeUltimaFuerza = 0f;
         }
+    }
+
+    public void MovePlayer(float input)
+    { 
+        strategy.Move(transform, velocidadLateral, input);
     }
     #endregion
 
